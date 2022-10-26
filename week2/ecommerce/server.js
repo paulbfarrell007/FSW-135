@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 7500;
 
+const inventoryRouter = require('./routes/inventory')
+app.use("/inventory", inventoryRouter)
 app.use(express.json())
 const mongoose = require('mongoose')
 const{Db}=require("mongodb")
