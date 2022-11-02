@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/inventorydb',
     useCreateIndex: true,
     useFindAndModify: false
   },
-  () => console.log("Connected to the DB")
+  () => console.log("Connected to the inventory DB")
 )
 
 app.get('/', (req, res) => {res.send("What up!");});
