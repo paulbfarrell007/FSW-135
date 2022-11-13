@@ -1,5 +1,5 @@
-import React,{ useContex} from 'react'
-import { UserContext } from './UserProvider'
+import React,{ useContext} from 'react'
+import { UserContext } from './Context/UserProvider'
 
 
 
