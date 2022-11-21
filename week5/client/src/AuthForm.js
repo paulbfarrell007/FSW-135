@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function AuthForm(props) {
-const {handleChange, handleSubmit, inputs:{username,password} } = props
+const {handleChange, btntext, handleSubmit, inputs:{username,password} } = props
     return (
         <form onSubmit = {handleSubmit}>
             <input 
@@ -15,9 +15,7 @@ const {handleChange, handleSubmit, inputs:{username,password} } = props
             onChange = {handleChange}
             placeholder = 'password'
             />
-        <button 
-        onClick={LogOut}> LogOut
-        </button>
+        <button> {btntext} </button>
         </form>
     )
 }

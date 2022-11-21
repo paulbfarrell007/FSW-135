@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import AuthForm from './AuthForm.js'
-import { UserContext } from './Context/UserProvider.js'
+import { UserContext } from '../src/Context/UserProvider'
 
 const initInputs = { username: "", password: "" }
 
@@ -27,5 +27,29 @@ export default function Auth(){
     e.preventDefault()
     login(inputs)
   }
-return (<Auth />)
+return (
+  <div>
+    <h1>Issues</h1>
+    {!toggle?
+  <>
+  <AuthForm handleChange={handleChange}
+            handleSignup={handleSignup}
+            input={inputs}
+            btntext='signup'  />
+            <p onClick={() => setToggle(prev => !prev)}> Already a Member?</p>
+
+  </>
+  :
+  <>
+  <AuthForm handleChange={handleChange}
+            handleLogin={handleLogin}
+            input={inputs}
+            btntext='login'   />
+            <p onClick={() => setToggle(prev => !prev)}> Not a Member?</p>
+
+  </>
+  
+  }
+  </div>
+  )
 }

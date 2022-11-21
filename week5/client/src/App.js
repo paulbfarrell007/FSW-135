@@ -3,7 +3,7 @@ import Auth from './Auth.js';
 import Profile from './Profile.js';
 import React,{useContext} from 'react';
 import {Routes,Route,Navigate} from 'react-router';
-import {UserContext} from './UserProvider'
+import {UserContext} from '../src/Context/UserProvider'
 import Navbar from './Navbar.js'
 
 
