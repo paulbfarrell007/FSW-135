@@ -30,22 +30,12 @@ issueRouter.post("/", (req, res, next) => {
   })
 
 
-//findOne
 
-issueRouter.get("/", (req, res, next) => {
-    issue.findById((err, issue) => {
-      if(err){
-        res.status(500)
-        return next(err)
-      }
-      return res.status(200).send(issue)
-    })
-  })
 
 //findAll
 
-issueRouter.get("/", (req, res, next) => {
-    issue.find((err, issue) => {
+issueRouter.get("/:issueID", (req, res, next) => {
+    issue.findOne({ _id: req.params.issueID},(err, issue) => {
       if(err){
         res.status(500)
         return next(err)
@@ -57,8 +47,8 @@ issueRouter.get("/", (req, res, next) => {
 
 //update
 
-issueRouter.put("/:issueId", (req, res, next) => {
-    inventory.findOneAndUpdate(
+issueRouter.put("/:issueID", (req, res, next) => {
+    issue.findOneAndUpdate(
       { _id: req.params.issueID},
       req.body,
       {new: true},
@@ -75,9 +65,9 @@ issueRouter.put("/:issueId", (req, res, next) => {
 
 //delete
 
-issueRouter.delete("/:issueId", (req, res, next) => {
+issueRouter.delete("/:issueID", (req, res, next) => {
     issue.findOneAndDelete(
-      {_id: req.params.issueId}, 
+      {_id: req.params.issueID}, 
       (err, deletedIssue) => {
         if(err){
           res.status(500)

@@ -1,13 +1,9 @@
 const express = require ("express");
 const app = express();
-//const morgan = require('morgan')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const expressJwt = require('express-jwt')
-
 app.use( express.json());
-
-//app.use(morgan)
 
 mongoose.connect('mongodb://localhost:27017/rock-the-vote',
 {
@@ -19,8 +15,9 @@ mongoose.connect('mongodb://localhost:27017/rock-the-vote',
 },
 () => console.log("Connected to the DB")
 )
-app.get("/",()=>{
+app.get("/",(req,res)=>{
     console.log("test")
+    res.send('testing 1,2,3')
 })
 app.use("/users",require('./routes/authRouter'))
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
@@ -33,5 +30,5 @@ app.use((err,req,res,next)=>{
 })
 
 app.listen(9000, () =>{
-    console.log("The app is listening on port 9000")
+    console.log("The app is buzzin on port 9000")
 });
